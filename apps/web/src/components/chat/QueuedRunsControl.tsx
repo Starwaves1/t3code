@@ -34,6 +34,7 @@ import { useAtomCommand } from "../../state/use-atom-command";
 import { isImageAttachment, type ChatImageAttachment, type ChatMessage } from "../../types";
 import { cn } from "~/lib/utils";
 import { Button, InlineButton } from "../ui/button";
+import { Kbd } from "../ui/kbd";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "../ui/tooltip";
 import type { TimestampFormat } from "@t3tools/contracts/settings";
 import { GuestMessageName } from "./guestMessageStyle";
@@ -282,6 +283,11 @@ export function QueuedRunsControl({
                         >
                           <ArrowUpIcon />
                           Send now
+                          {item.serverIndex === 0 && props.steerShortcutLabel ? (
+                            <Kbd aria-hidden className="max-sm:hidden">
+                              {props.steerShortcutLabel}
+                            </Kbd>
+                          ) : null}
                         </Button>
                       </TooltipTrigger>
                       <TooltipPopup>
